@@ -3,9 +3,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
@@ -15,7 +14,7 @@ public class TextBoxTests {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000;
     }
 
@@ -31,16 +30,20 @@ public class TextBoxTests {
         $("#lastName").setValue("Mitrofanova");
         $("#userEmail").setValue("KMitrofanova@mail.ru");
         $("#userNumber").setValue("8999123456");
-        $("[for='gender-radio-2']").click();
+        $("#genterWrapper").$(byText("Female")).click();
+        //$("[for='gender-radio-2']").click();
         //$("#subjectsContainer").setValue("Russia");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("June");
         $(".react-datepicker__year-select").selectOption("1997");
         $(".react-datepicker__day--003").click();
         $("#subjectsInput").val("Computer Science").pressEnter();
-        $("[for='hobbies-checkbox-1']").click();
-        $("[for='hobbies-checkbox-2']").click();
-        $("[for='hobbies-checkbox-3']").click();
+        $ ("#hobbiesWrapper").$(byText("Sports")).click();
+        $ ("#hobbiesWrapper").$(byText("Reading")).click();
+        $ ("#hobbiesWrapper").$(byText("Music")).click();
+        //$("[for='hobbies-checkbox-1']").click();
+        //$("[for='hobbies-checkbox-2']").click();
+        //$("[for='hobbies-checkbox-3']").click();
         $("#uploadPicture").uploadFromClasspath("QA.jpeg");
         $("#currentAddress").setValue("Penza, Central street 132");
         $("#react-select-3-input").val("NCR").pressEnter();
